@@ -1,0 +1,63 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group 'com.kazurayam'
+version '0.1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def integrationTest = sourceSets.create("integrationTest")
+def integrationTestTask = tasks.register("integrationTest", Test) {
+    description = "Runs the integration tests."
+    testClassesDirs = integrationTest.output.classesDirs
+    classpath = integrationTest.runtimeClasspath
+    mustRunAfter(tasks.named('test'))
+}
+
+def functionalTest = sourceSets.create("functionalTest")
+def functionalTestTask = tasks.register("functionalTest", Test) {
+    description = "Runs the functional tests."
+    group = "verification"
+    testClassesDirs = functionalTest.output.classesDirs
+    classpath = functionalTest.runtimeClasspath
+    mustRunAfter(tasks.named('test'))
+}
+
+tasks.named('check') {
+    dependsOn(integrationTestTask, functionalTestTask)
+}
+dependencies {
+    implementation libs.poi
+    testImplementation platform(libs.spock.bom)
+    testImplementation libs.spock.core
+    integrationTestImplementation platform(libs.spock.bom)
+    integrationTestImplementation libs.spock.core
+    functionalTestImplementation platform(libs.spock.bom)
+    functionalTestImplementation libs.spock.core
+
+    integrationTestImplementation sourceSets.main.output
+
+}
+
+
+gradlePlugin {
+    // configure the `java-gradle-plugin` so that it looks at the `sourceSets.functionalTest`
+    // to find the tests for the custom plugin.
+    testSourceSets(sourceSets.functionalTest)
+    // This makes `org.gradle.testkit.runner.GradleRunner` class available to the
+    // functionalTest classes.
+}
+
+
+
+tasks.withType(Test).configureEach {
+    // Using JUnitPlatform for running tests written using JUnit5 API
+    useJUnitPlatform()
+}
+
+
