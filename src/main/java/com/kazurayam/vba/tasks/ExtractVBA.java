@@ -8,14 +8,14 @@ import org.gradle.api.tasks.TaskAction;
 abstract public class ExtractVBA extends DefaultTask {
 
     @Input
-    abstract public Property<String> getFilePath();
+    abstract public Property<String> getInput();
 
     public ExtractVBA() {
-        getFilePath().convention("./sample.xlsm");
+        getInput().convention("./sample.xlsm");
     }
 
     @TaskAction
     public void action() {
-        System.out.println(String.format("Hello, %s", getFilePath().get()));
+        System.out.println(String.format("Hello, %s", getInput().get()));
     }
 }

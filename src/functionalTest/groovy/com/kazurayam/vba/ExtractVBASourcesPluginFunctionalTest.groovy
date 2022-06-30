@@ -4,6 +4,8 @@ import org.gradle.testkit.runner.GradleRunner
 import spock.lang.Specification
 import spock.lang.TempDir
 
+import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
+
 class ExtractVBASourcesPluginFunctionalTest extends Specification {
 
     @TempDir
@@ -22,7 +24,7 @@ plugins {
     def "can successfully configure Path through extensions and verify it"() {
         buildFile << """
 extractVBA {
-    path = './foo.xlsm'
+    input = './foo.xlsm'
 }
 """
         when:

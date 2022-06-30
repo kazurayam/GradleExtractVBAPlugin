@@ -1,9 +1,9 @@
 package com.kazurayam.vba;
 
 public class ExtractVBASourcesExtension {
-    public String path;
+    public String input;
 
-    public String getPath() {
-        return path;
+    public String getInput() {
+        return input;
     }
 }

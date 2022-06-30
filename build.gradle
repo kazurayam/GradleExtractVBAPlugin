@@ -22,7 +22,7 @@ def integrationTestTask = tasks.register("integrationTest", Test) {
 def functionalTest = sourceSets.create("functionalTest")
 def functionalTestTask = tasks.register("functionalTest", Test) {
     description = "Runs the functional tests."
-    group = "verification"
+    group = "extractVBA"
     testClassesDirs = functionalTest.output.classesDirs
     classpath = functionalTest.runtimeClasspath
     mustRunAfter(tasks.named('test'))
@@ -31,6 +31,7 @@ def functionalTestTask = tasks.register("functionalTest", Test) {
 tasks.named('check') {
     dependsOn(integrationTestTask, functionalTestTask)
 }
+
 dependencies {
     implementation libs.poi
     testImplementation platform(libs.spock.bom)
@@ -41,9 +42,7 @@ dependencies {
     functionalTestImplementation libs.spock.core
 
     integrationTestImplementation sourceSets.main.output
-
 }
-
 
 gradlePlugin {
     // configure the `java-gradle-plugin` so that it looks at the `sourceSets.functionalTest`
@@ -53,11 +52,7 @@ gradlePlugin {
     // functionalTest classes.
 }
 
-
-
 tasks.withType(Test).configureEach {
     // Using JUnitPlatform for running tests written using JUnit5 API
     useJUnitPlatform()
 }
-
-

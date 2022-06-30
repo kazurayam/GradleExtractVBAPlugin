@@ -13,7 +13,7 @@ public class ExtractVBASourcesPlugin implements Plugin<Project> {
                         .create("excelPath", ExtractVBASourcesExtension.class);
         // create "extractVBA" task
         project.getTasks().register("extractVBA", ExtractVBA.class, task -> {
-            task.getFilePath().set(extension.getPath());
+            task.getInput().set(extension.getInput());
         });
     }
 }
