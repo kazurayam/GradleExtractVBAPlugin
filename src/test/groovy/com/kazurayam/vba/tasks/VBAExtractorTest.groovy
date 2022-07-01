@@ -1,5 +1,6 @@
 package com.kazurayam.vba.tasks
 
+import org.apache.poi.poifs.macros.VBAMacroExtractor
 import spock.lang.Specification
 import spock.lang.TempDir
 
@@ -12,7 +13,7 @@ class VBAExtractorTest extends Specification {
     }
 
     def "Are you alright?"() {
-        VBAExtractor instance = new VBAExtractor()
+        VBAMacroExtractor instance = new VBAMacroExtractor()
         assert instance != null
     }
 }
