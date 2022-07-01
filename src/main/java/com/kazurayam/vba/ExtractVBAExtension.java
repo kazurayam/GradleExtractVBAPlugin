@@ -1,6 +1,6 @@
 package com.kazurayam.vba;
 
-public class ExtractVBASourcesExtension {
+public class ExtractVBAExtension {
 
     public String input;
 

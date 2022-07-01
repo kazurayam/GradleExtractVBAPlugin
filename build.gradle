@@ -46,6 +46,10 @@ dependencies {
     testImplementation libs.junit.jupiter.api
     testRuntimeOnly libs.junit.jupiter.engine
 
+    testImplementation libs.commons.io
+    integrationTestImplementation libs.commons.io
+    functionalTestImplementation libs.commons.io
+
     integrationTestImplementation sourceSets.main.output
 }
 
