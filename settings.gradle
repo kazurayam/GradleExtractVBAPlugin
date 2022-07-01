@@ -19,6 +19,11 @@ dependencyResolutionManagement {
             version('spock', '2.0-groovy-3.0')
             library('spock-core', 'org.spockframework', 'spock-core').versionRef('spock')
             library('spock-bom', 'org.spockframework', 'spock-bom').versionRef('spock')
+
+            version('junit5', '5.8.2')
+            library('junit-jupiter', 'org.junit.jupiter', 'junit-jupiter').versionRef('junit5')
+            library('junit-jupiter-api', 'org.junit.jupiter', 'junit-jupiter-api').versionRef('junit5')
+            library('junit-jupiter-engine', 'org.junit.jupiter', 'junit-jupiter-engine').versionRef('junit5')
         }
     }
 }

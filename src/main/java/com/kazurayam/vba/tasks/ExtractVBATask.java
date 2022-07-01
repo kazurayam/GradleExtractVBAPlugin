@@ -5,12 +5,12 @@ import org.gradle.api.provider.Property;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
 
-abstract public class ExtractVBA extends DefaultTask {
+abstract public class ExtractVBATask extends DefaultTask {
 
     @Input
     abstract public Property<String> getInput();
 
-    public ExtractVBA() {
+    public ExtractVBATask() {
         getInput().convention("./sample.xlsm");
     }
 

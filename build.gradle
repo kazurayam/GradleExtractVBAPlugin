@@ -41,6 +41,11 @@ dependencies {
     functionalTestImplementation platform(libs.spock.bom)
     functionalTestImplementation libs.spock.core
 
+    // JUnit Jupiter is used by all unit tests of all subprojects
+    testImplementation libs.junit.jupiter
+    testImplementation libs.junit.jupiter.api
+    testRuntimeOnly libs.junit.jupiter.engine
+
     integrationTestImplementation sourceSets.main.output
 }
 

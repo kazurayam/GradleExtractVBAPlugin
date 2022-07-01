@@ -2,7 +2,7 @@ package com.kazurayam.vba;
 
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
-import com.kazurayam.vba.tasks.ExtractVBA;
+import com.kazurayam.vba.tasks.ExtractVBATask;
 public class ExtractVBASourcesPlugin implements Plugin<Project> {
 
     @Override
@@ -12,7 +12,7 @@ public class ExtractVBASourcesPlugin implements Plugin<Project> {
                 project.getExtensions()
                         .create("excelPath", ExtractVBASourcesExtension.class);
         // create "extractVBA" task
-        project.getTasks().register("extractVBA", ExtractVBA.class, task -> {
+        project.getTasks().register("extractVBA", ExtractVBATask.class, task -> {
             task.getInput().set(extension.getInput());
         });
     }
