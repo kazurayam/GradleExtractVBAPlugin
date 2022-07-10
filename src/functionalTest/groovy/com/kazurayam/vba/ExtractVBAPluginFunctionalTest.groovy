@@ -24,8 +24,8 @@ class ExtractVBAPluginFunctionalTest extends Specification {
 
     def setup() {
         projectDir = Paths.get(System.getProperty("user.dir"))
-        excelFile = projectDir.resolve("src/test/resources/fixture")
-                        .resolve("UnitTestingExcelVBA.xlsm")
+        excelFile = projectDir.resolve("src/functionalTest/resources/fixture")
+                        .resolve("04請求書作成.xlsm")
         // make sure outputDir exists and is empty
         outputDir = projectDir.resolve("build/tmp/testOutput")
                 .resolve(this.getClass().getSimpleName())
