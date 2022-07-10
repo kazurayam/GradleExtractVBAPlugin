@@ -1,4 +1,4 @@
-rootProject.name = 'GradleExtractVBAPlugin'
+rootProject.name = 'extract-vba.gradle.plugin'
 
 dependencyResolutionManagement {
     versionCatalogs {
